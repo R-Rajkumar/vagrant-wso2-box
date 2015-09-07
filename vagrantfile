@@ -1,0 +1,44 @@
+# -*- mode: ruby -*-
+# # vi: set ft=ruby :
+ 
+# specify minimum Vagrant version and Vagrant API version
+Vagrant.require_version ">= 1.6.0"
+VAGRANTFILE_API_VERSION = "2"
+
+# require YAML module
+require 'yaml'
+ 
+# load server config from YAML file
+servers = YAML.load_file('servers.yaml')
+ 
+Vagrant.configure(2) do |config|
+    # turn on shared folders
+    config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: false
+    servers.each do |opts|
+        config.vm.define opts["servername"] do |config|
+	    config.vm.box = opts["box"]
+	    config.vm.box_version = "1.0.1"
+            # give the VM a hostname
+	    config.vm.hostname = opts["servername"]
+
+            # set networking as private, should be locked down and firewall settings here
+            config.vm.network :private_network, ip: opts["eth1"]
+
+            # configure specific VM settings such as memory and cpus
+            config.vm.provider "virtualbox" do |v|
+       	        v.name = opts["servername"]
+	        v.customize ["modifyvm", :id, "--groups", "/MBIE WSO2 Development"]
+                v.customize ["modifyvm", :id, "--memory", opts["mem"]]
+                v.customize ["modifyvm", :id, "--cpus", opts["cpu"]]
+            end
+
+            # provision the ESB components using Puppet
+            config.vm.provision :puppet do |puppet|
+                puppet.manifests_path = "puppet/manifests" 
+    	        puppet.module_path = "puppet/modules" 
+    		puppet.manifest_file  = "site.pp"
+	    end
+
+        end
+    end
+end
