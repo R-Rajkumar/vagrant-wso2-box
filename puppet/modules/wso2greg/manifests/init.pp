@@ -131,6 +131,6 @@ exec { "create-apimgt-db":
     unless  => "test -f ${carbon_home}/wso2carbon.lck",
     command => "touch ${carbon_home}/wso2carbon.lck; ${carbon_home}/bin/wso2server.sh > /dev/null 2>&1 &",
     creates => "${carbon_home}/repository/wso2carbon.log",
-    require   => Exec["starting_configurator"];
+    require   => Exec["starting_configurator", "create-apimgt-db", "create-user-db", "create-registry-db"];
   }
 }

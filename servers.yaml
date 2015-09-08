@@ -27,8 +27,31 @@
   subdomain: wso2esb
   hostname: wso2esb
   eth1: 192.168.100.30
-  mem: 2048
+  mem: 1024
   cpu: 1
   user: wso2
   group: wso2
   base_dir: "/opt/wso2/"
+- servername: wso2api-pubstore
+  box: puppetlabs/ubuntu-14.04-64-puppet
+  module: wso2api-pubstore
+  subdomain: wso2api-pubstore
+  hostname: wso2am
+  eth1: 192.168.100.40
+  mem: 1024
+  cpu: 1
+  user: wso2
+  group: wso2
+  base_dir: "/opt/wso2/"
+- servername: wso2api-gwkm
+  box: puppetlabs/ubuntu-14.04-64-puppet
+  module: wso2api-gwkm
+  subdomain: wso2api-gwkm
+  hostname: wso2am
+  eth1: 192.168.100.50
+  mem: 1024
+  cpu: 1
+  user: wso2
+  group: wso2
+  base_dir: "/opt/wso2/"
+

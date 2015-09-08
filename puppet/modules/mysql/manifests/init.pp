@@ -24,6 +24,20 @@ class mysql{
     require => Service['mysql'];
   }
 
+#  if $root_password {
+#    exec {
+#      'Delete anonymous users':
+#        path    => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+#        command => "mysql -uroot -p${root_password} -Bse \"DELETE from mysql.user WHERE password=''\"",
+#        require => Exec['Set root password'];
+#
+#      'Create mysql user root@%':
+#        path    => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+#        command => "mysql -uroot -p${root_password} -Bse \"CREATE USER 'root'@'%' IDENTIFIED BY '${root_password}'\"",
+#        require => Exec['Delete anonymous users'];
+#    }
+#  }
+
   file { '/etc/mysql/my.cnf':
     ensure  => present,
     content => template('mysql/my.cnf.erb'),
