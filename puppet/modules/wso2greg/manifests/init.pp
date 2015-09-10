@@ -94,8 +94,8 @@ class wso2greg (
 
 # create registry database
 exec { "create-registry-db":
-    unless => "/usr/bin/mysql -uroot -proot -e \"use mbie_registry;\"",
-    command => "/usr/bin/mysql -uroot -proot -e \"create database mbie_registry; use mbie_registry; source /tmp/registry_mysql.sql; grant all on mbie_registry.* to 'root'@'%' identified by 'root';\"",
+    unless => "/usr/bin/mysql -uroot -proot -e \"use registry;\"",
+    command => "/usr/bin/mysql -uroot -proot -e \"create database registry; use registry; source /tmp/registry_mysql.sql; grant all on registry.* to 'root'@'%' identified by 'root';\"",
     require => [Service["mysql"], File["/tmp/registry_mysql.sql"]];
  }
 
@@ -108,8 +108,8 @@ exec { "create-registry-db":
 
 # create user database
 exec { "create-user-db":
-    unless => "/usr/bin/mysql -uroot -proot -e \"use mbie_userdb;\"",
-    command => "/usr/bin/mysql -uroot -proot -e \"create database mbie_userdb; use mbie_userdb; source /tmp/userdb_mysql.sql; grant all on mbie_userdb.* to 'root'@'%' identified by 'root';\"",
+    unless => "/usr/bin/mysql -uroot -proot -e \"use userdb;\"",
+    command => "/usr/bin/mysql -uroot -proot -e \"create database userdb; use userdb; source /tmp/userdb_mysql.sql; grant all on userdb.* to 'root'@'%' identified by 'root';\"",
     require => [Service["mysql"], File["/tmp/userdb_mysql.sql"]];
  }
 
@@ -123,8 +123,8 @@ exec { "create-user-db":
 
 # create apimgt database
 exec { "create-apimgt-db":
-    unless => "/usr/bin/mysql -uroot -proot -e \"use mbie_apimgtdb;\"",
-    command => "/usr/bin/mysql -uroot -proot -e \"create database mbie_apimgtdb; use mbie_apimgtdb; source /tmp/apimgtdb_mysql.sql; grant all on mbie_apimgtdb.* to 'root'@'%' identified by 'root';\"",
+    unless => "/usr/bin/mysql -uroot -proot -e \"use apimgtdb;\"",
+    command => "/usr/bin/mysql -uroot -proot -e \"create database apimgtdb; use apimgtdb; source /tmp/apimgtdb_mysql.sql; grant all on apimgtdb.* to 'root'@'%' identified by 'root';\"",
     require => [Service["mysql"], File["/tmp/apimgtdb_mysql.sql"]];
  }
 

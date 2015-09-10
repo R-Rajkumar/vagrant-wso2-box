@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
 
             config.vm.provider "virtualbox" do |v|
        	        v.name = opts["servername"]
-	        v.customize ["modifyvm", :id, "--groups", "/MBIE WSO2 Development"]
+	        v.customize ["modifyvm", :id, "--groups", "/WSO2 Development"]
                 v.customize ["modifyvm", :id, "--memory", opts["mem"]]
                 v.customize ["modifyvm", :id, "--cpus", opts["cpu"]]
             end
