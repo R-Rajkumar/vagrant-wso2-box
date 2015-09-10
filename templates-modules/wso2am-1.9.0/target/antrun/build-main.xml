@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy todir="../../puppet/modules/wso2am/files/packs" file="target/wso2am-1.9.0-template-module-1.0.0-SNAPSHOT.zip" overwrite="true"/>
+</target>
+</project>

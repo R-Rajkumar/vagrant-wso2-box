@@ -2,6 +2,7 @@ class wso2greg (
   $version            = undef,
   $owner              = 'root',
   $group              = 'root',
+  $environment_params = undef,
 )  {
 
   $service_code       = "wso2greg"
@@ -11,6 +12,10 @@ class wso2greg (
   $configurator_home  = "/mnt/${configurator_name}-${configurator_version}"
   $template_module_pack = "${server_name}-template-module-${ppaas_version}.zip"
   $java_home  = "/opt/${java_folder}"
+
+# adding more env params such as java home, carbon home to $environment_params array
+  $environment__util_params = ["CARBON_HOME=${carbon_home}", "CONFIGURATOR_HOME=${configurator_home}"]
+  $environment_params_to_configurator = split(inline_template("<%= (environment_params + environment__util_params).join(',') %>"),',')
 
 # creating /mnt/{ip_address} folder
   exec {
@@ -74,7 +79,7 @@ class wso2greg (
 # starting configurator
   exec { "starting_configurator":
     user        => $owner,
-    environment => [ "CARBON_HOME=${carbon_home}", "CONFIGURATOR_HOME=${configurator_home}","JAVA_HOME=${java_home}" ],
+    environment => $environment_params_to_configurator,
     path        => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
     command     => "${configurator_home}/configurator.py",
     require   => Exec["extracting_template_module_${template_module_pack}"];
@@ -128,8 +133,7 @@ exec { "create-apimgt-db":
     user    => $owner,
     environment => "JAVA_HOME=${java_home}",
     path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/java/bin/',
-    unless  => "test -f ${carbon_home}/wso2carbon.lck",
-    command => "touch ${carbon_home}/wso2carbon.lck; ${carbon_home}/bin/wso2server.sh > /dev/null 2>&1 &",
+    command => "touch ${carbon_home}/wso2carbon.lck; ${carbon_home}/bin/wso2server.sh restart > /dev/null 2>&1 &",
     creates => "${carbon_home}/repository/wso2carbon.log",
     require   => Exec["starting_configurator", "create-apimgt-db", "create-user-db", "create-registry-db"];
   }

@@ -16,15 +16,12 @@ Vagrant.configure(2) do |config|
     config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: false
     servers.each do |opts|
         config.vm.define opts["servername"] do |config|
-	    config.vm.box = opts["box"]
-	    config.vm.box_version = "1.0.1"
-            # give the VM a hostname
-	    config.vm.hostname = opts["servername"]
 
-            # set networking as private, should be locked down and firewall settings here
+	    config.vm.box = opts["box"]
+	    config.vm.box_version = opts["box_version"]
+	    config.vm.hostname = opts["hostname"]
             config.vm.network :private_network, ip: opts["eth1"]
 
-            # configure specific VM settings such as memory and cpus
             config.vm.provider "virtualbox" do |v|
        	        v.name = opts["servername"]
 	        v.customize ["modifyvm", :id, "--groups", "/MBIE WSO2 Development"]
@@ -32,13 +29,11 @@ Vagrant.configure(2) do |config|
                 v.customize ["modifyvm", :id, "--cpus", opts["cpu"]]
             end
 
-            # provision the ESB components using Puppet
             config.vm.provision :puppet do |puppet|
                 puppet.manifests_path = "puppet/manifests" 
     	        puppet.module_path = "puppet/modules" 
     		puppet.manifest_file  = "site.pp"
 	    end
-
         end
     end
 end

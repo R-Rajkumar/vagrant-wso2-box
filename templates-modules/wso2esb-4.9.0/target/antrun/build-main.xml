@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy todir="../../puppet/modules/wso2esb/files/packs" file="target/wso2esb-4.9.0-BETA-template-module-1.0.0-SNAPSHOT.zip" overwrite="true"/>
+</target>
+</project>

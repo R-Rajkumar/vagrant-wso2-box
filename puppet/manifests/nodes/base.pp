@@ -2,7 +2,7 @@
 node 'base' {
 
 # General Configurations
-  $ppaas_version        = '4.1.0-SNAPSHOT'
+  $ppaas_version        = '1.0.0-SNAPSHOT'
   $server_ip            = $ipaddress
 
 # PCA Configurations

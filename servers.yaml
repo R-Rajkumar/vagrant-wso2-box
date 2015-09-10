@@ -1,9 +1,10 @@
 ---
 - servername: wso2greg
   box: puppetlabs/ubuntu-14.04-64-puppet
+  box_version: 1.0.1
   module: wso2greg
   subdomain: wso2greg
-  hostname:  wso2greg
+  hostname:  wso2greg-4.6.0
   eth1: 192.168.100.10
   mem: 1024
   cpu: 1
@@ -12,6 +13,7 @@
   base_dir: "/opt/wso2/"
 - servername: wso2dss
   box: puppetlabs/ubuntu-14.04-64-puppet
+  box_version: 1.0.1
   module: wso2dss
   subdomain: wso2dss
   hostname:  wso2dss
@@ -23,9 +25,10 @@
   base_dir: "/opt/wso2/"
 - servername: wso2esb
   box: puppetlabs/ubuntu-14.04-64-puppet
+  box_version: 1.0.1
   module: wso2esb
   subdomain: wso2esb
-  hostname: wso2esb
+  hostname: wso2esb-4.9.0
   eth1: 192.168.100.30
   mem: 1024
   cpu: 1
@@ -34,9 +37,10 @@
   base_dir: "/opt/wso2/"
 - servername: wso2api-pubstore
   box: puppetlabs/ubuntu-14.04-64-puppet
+  box_version: 1.0.1
   module: wso2api-pubstore
   subdomain: wso2api-pubstore
-  hostname: wso2am
+  hostname: wso2api-pubstore-1.9.0
   eth1: 192.168.100.40
   mem: 1024
   cpu: 1
@@ -45,9 +49,10 @@
   base_dir: "/opt/wso2/"
 - servername: wso2api-gwkm
   box: puppetlabs/ubuntu-14.04-64-puppet
+  box_version: 1.0.1
   module: wso2api-gwkm
   subdomain: wso2api-gwkm
-  hostname: wso2am
+  hostname: wso2api-gwkm-1.9.0
   eth1: 192.168.100.50
   mem: 1024
   cpu: 1
