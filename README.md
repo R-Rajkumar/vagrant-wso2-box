@@ -4,17 +4,17 @@ It is a tool to build your WSO2 dev environment in seconds!
 # Technologies Used
   - Vagrant
   - Puppet
-  - WSO2 Private PaaS Configurator
-  - WSO2 Product Template Modules
+  - [WSO2 Private PaaS Configurator](https://github.com/wso2/product-private-paas/tree/master/components/org.wso2.ppaas.configurator)
+  - [WSO2 Product Template Modules](https://github.com/wso2/product-private-paas/tree/master/cartridges/templates-modules)
 
 # Supported WSO2 Products
-  - WSO2 ESB 4.9.0
-  - WSO2 ESB 4.8.1
-  - WSO2 Governance Registry 5.0.0
-  - WSO2 Governance Registry 4.6.0
-  - WSO2 API Manager 1.9.1
-  - WSO2 API Manager 1.9.0
-  - WSO2 Data Services Server 3.2.2
+  - [WSO2 ESB 4.9.0](http://wso2.com/products/enterprise-service-bus/)
+  - [WSO2 ESB 4.8.1](http://wso2.com/products/enterprise-service-bus/)
+  - [WSO2 Governance Registry 5.0.0](http://wso2.com/products/governance-registry/)
+  - [WSO2 Governance Registry 4.6.0](http://wso2.com/products/governance-registry/)
+  - [WSO2 API Manager 1.9.1](http://wso2.com/products/api-manager/)
+  - [WSO2 API Manager 1.9.0](http://wso2.com/products/api-manager/)
+  - [WSO2 Data Services Server 3.2.2](http://wso2.com/products/data-services-server/)
 
 # How to use?
 ```sh
