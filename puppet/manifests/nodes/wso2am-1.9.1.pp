@@ -35,9 +35,13 @@ node /wso2api-pubstore-1.9.1/ inherits base {
         "CONFIG_PARAM_DB_USER_NAME=root",
         "CONFIG_PARAM_DB_PASSWORD=root",
         "CONFIG_PARAM_REG_DB_URL=jdbc:mysql://192.168.100.10:3306/registry",
-        "CONFIG_PARAM_DB_USER_NAME=root",
-        "CONFIG_PARAM_DB_PASSWORD=root",
+        "CONFIG_PARAM_REG_DB_USER_NAME=root",
+        "CONFIG_PARAM_REG_DB_PASSWORD=root",
         "CONFIG_PARAM_REMOTE_REGISTRY_URL=https://192.168.100.10:9443",
+	"CONFIG_PARAM_CONFIG_DB_URL=jdbc:mysql://192.168.100.10:3306/registry",
+	"CONFIG_PARAM_CONFIG_DB_USER_NAME=root",
+	"CONFIG_PARAM_CONFIG_DB_PASSWORD=root",
+	"CONFIG_PARAM_DRIVER_CLASS_NAME=com.mysql.jdbc.Driver"
         ]
   }
 
@@ -51,7 +55,7 @@ node /wso2api-gwkm-1.9.1/ inherits base {
   class { 'wso2am':
     version      => '1.9.1',
     environment_params =>  [
-        "CONFIG_PARAM_PROFILE=GatewayKeymanager",
+        "CONFIG_PARAM_PROFILE=Gateway-KeyManager",
         "CONFIG_PARAM_KEYVALIDATORCLIENTTYPE=WSClient",
         "CONFIG_PARAM_ENABLETHRIFTSERVER=false",
         "CONFIG_PARAM_CLUSTERING=false",
@@ -62,9 +66,12 @@ node /wso2api-gwkm-1.9.1/ inherits base {
         "CONFIG_PARAM_DB_USER_NAME=root",
         "CONFIG_PARAM_DB_PASSWORD=root",
         "CONFIG_PARAM_REG_DB_URL=jdbc:mysql://192.168.100.10:3306/registry",
-        "CONFIG_PARAM_DB_USER_NAME=root",
-        "CONFIG_PARAM_DB_PASSWORD=root",
+        "CONFIG_PARAM_REG_DB_USER_NAME=root",
+        "CONFIG_PARAM_REG_DB_PASSWORD=root",
         "CONFIG_PARAM_REMOTE_REGISTRY_URL=https://192.168.100.10:9443",
+        "CONFIG_PARAM_CONFIG_DB_URL=jdbc:mysql://192.168.100.10:3306/registry",
+        "CONFIG_PARAM_CONFIG_DB_USER_NAME=root",
+        "CONFIG_PARAM_CONFIG_DB_PASSWORD=root"
         ]
   }
 

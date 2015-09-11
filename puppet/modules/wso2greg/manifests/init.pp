@@ -92,11 +92,18 @@ class wso2greg (
       source    => ["puppet:///modules/${service_code}/dbscripts/registry/mysql.sql"],
   }
 
+# copy identity mysql.sql to /tmp/registry_identity_mysql.sql
+  file {
+    "/tmp/registry_identity_mysql.sql":
+      ensure    => present,
+      source    => ["puppet:///modules/${service_code}/dbscripts/identity/mysql.sql"],
+  }
+
 # create registry database
 exec { "create-registry-db":
     unless => "/usr/bin/mysql -uroot -proot -e \"use registry;\"",
-    command => "/usr/bin/mysql -uroot -proot -e \"create database registry; use registry; source /tmp/registry_mysql.sql; grant all on registry.* to 'root'@'%' identified by 'root';\"",
-    require => [Service["mysql"], File["/tmp/registry_mysql.sql"]];
+    command => "/usr/bin/mysql -uroot -proot -e \"create database registry; use registry; source /tmp/registry_mysql.sql; source /tmp/registry_identity_mysql.sql; grant all on registry.* to 'root'@'%' identified by 'root';\"",
+    require => [Service["mysql"], File["/tmp/registry_mysql.sql", "/tmp/registry_identity_mysql.sql"]];
  }
 
 # copy mysql.sql to /tmp/userdb_mysql.sql

@@ -4,7 +4,7 @@
   box_version: 1.0.1
   module: wso2greg
   subdomain: wso2greg
-  hostname:  wso2greg-4.6.0
+  hostname:  wso2greg-5.0.0
   eth1: 192.168.100.10
   mem: 1024
   cpu: 1
@@ -40,7 +40,7 @@
   box_version: 1.0.1
   module: wso2api-pubstore
   subdomain: wso2api-pubstore
-  hostname: wso2api-pubstore-1.9.0
+  hostname: wso2api-pubstore-1.9.1
   eth1: 192.168.100.40
   mem: 1024
   cpu: 1
@@ -52,7 +52,7 @@
   box_version: 1.0.1
   module: wso2api-gwkm
   subdomain: wso2api-gwkm
-  hostname: wso2api-gwkm-1.9.0
+  hostname: wso2api-gwkm-1.9.1
   eth1: 192.168.100.50
   mem: 1024
   cpu: 1

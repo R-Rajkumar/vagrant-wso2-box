@@ -13,7 +13,8 @@ node /wso2greg-5.0.0/ inherits base {
 	"CONFIG_PARAM_LOCAL_REGISTRY_DB_PASSWORD=root",
 	"CONFIG_PARAM_USER_MGT_DB_URL=jdbc:mysql://localhost:3306/userdb",
 	"CONFIG_PARAM_USER_MGT_DB_USER_NAME=root",
-	"CONFIG_PARAM_USER_MGT_DB_PASSWORD=root"
+	"CONFIG_PARAM_USER_MGT_DB_PASSWORD=root",
+	"CONFIG_PARAM_DRIVER_CLASS_NAME=com.mysql.jdbc.Driver"
         ]
   }
   Class['stratos_base'] -> Class['mysql'] -> Class['java'] -> Class['configurator']-> Class['wso2greg']

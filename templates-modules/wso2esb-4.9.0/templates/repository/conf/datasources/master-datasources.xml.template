@@ -48,38 +48,17 @@
             </definition>
         </datasource>
         {% endif %}
-        {% if CONFIG_PARAM_REGISTRY_DB_URL is defined -%}
+
+        {% if CONFIG_PARAM_REG_DB_URL is defined -%}
         <datasource>
-            <name>WSO2_REGISTRY_DB</name>
-            <description>The datasource used for governance registry</description>
+            <name>WSO2REG_DB</name>
+            <description>The datasource used by the registry</description>
             <jndiConfig>
-                <name>jdbc/WSO2RegistryDB</name>
+                <name>jdbc/WSO2REG_DB</name>
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>{{CONFIG_PARAM_REGISTRY_DB_URL}}</url>
-                    <username>{{CONFIG_PARAM_REGISTRY_DB_USER_NAME}}</username>
-                    <password>{{CONFIG_PARAM_REGISTRY_DB_PASSWORD}}</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
-                    <maxActive>50</maxActive>
-                    <maxWait>60000</maxWait>
-                    <testOnBorrow>true</testOnBorrow>
-                    <validationQuery>SELECT 1</validationQuery>
-                    <validationInterval>30000</validationInterval>
-                </configuration>
-            </definition>
-        </datasource>
-        {% endif %}
-        {% if CONFIG_PARAM_CONFIG_DB_URL is defined -%}
-        <datasource>
-            <name>WSO2_CONFIG_DB</name>
-            <description>The datasource used for config registry</description>
-            <jndiConfig>
-                <name>jdbc/WSO2ConfigDB</name>
-            </jndiConfig>
-            <definition type="RDBMS">
-                <configuration>
-                    <url>{{CONFIG_PARAM_CONFIG_DB_URL}}</url>
+                    <url>{{CONFIG_PARAM_REG_DB_URL}}?autoReconnect=true</url>
                     <username>{{CONFIG_PARAM_CONFIG_DB_USER_NAME}}</username>
                     <password>{{CONFIG_PARAM_CONFIG_DB_PASSWORD}}</password>
                     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
@@ -92,6 +71,30 @@
             </definition>
         </datasource>
         {% endif %}
+
+        {% if CONFIG_PARAM_CONFIG_DB_URL is defined -%}
+                <datasource>
+                    <name>WSO2_CONFIG_DB</name>
+                    <description>The datasource used by the registry</description>
+                    <jndiConfig>
+                        <name>jdbc/WSO2_CONFIG_DB</name>
+                    </jndiConfig>
+                    <definition type="RDBMS">
+                        <configuration>
+                            <url>{{CONFIG_PARAM_CONFIG_DB_URL}}?autoReconnect=true</url>
+                            <username>{{CONFIG_PARAM_CONFIG_DB_USER_NAME}}</username>
+                            <password>{{CONFIG_PARAM_CONFIG_DB_PASSWORD}}</password>
+                            <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                            <maxActive>50</maxActive>
+                            <maxWait>60000</maxWait>
+                            <testOnBorrow>true</testOnBorrow>
+                            <validationQuery>SELECT 1</validationQuery>
+                            <validationInterval>30000</validationInterval>
+                        </configuration>
+                    </definition>
+                </datasource>
+        {% endif %}
+
 	{% if CONFIG_PARAM_USER_MGT_DB_URL is defined -%}
         <datasource>
             <name>WSO2_USER_DB</name>
