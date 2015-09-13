@@ -80,10 +80,10 @@ $ vagrant halt wso2esb
 ```
 
 - If you want to destroy a ESB machine.
-  ```sh
-    $ cd vagrant-wso2-box
-    $ vagrant destroy wso2esb
-  ```
+```sh
+$ cd vagrant-wso2-box
+$ vagrant destroy wso2esb
+```
 
 # Want to change the IP of the machine?
 Open the servers.yaml file and add/edit the existing VM settings. One thing to note is that the ```hostname``` should match your puppet node definition. 
@@ -102,4 +102,5 @@ Open the servers.yaml file and add/edit the existing VM settings. One thing to n
   base_dir: "/opt/wso2/"
   ```
   
-  # More advanced guide is coming soon...
+  # Advanced Guide 
+  is coming soon...
