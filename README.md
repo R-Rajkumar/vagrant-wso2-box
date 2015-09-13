@@ -102,5 +102,5 @@ Open the servers.yaml file and add/edit the existing VM settings. One thing to n
   base_dir: "/opt/wso2/"
   ```
   
-  # Advanced Guide 
-  is coming soon...
+# Advanced Guide
+is coming soon...
