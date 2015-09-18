@@ -61,7 +61,7 @@
             <enableCache>true</enableCache>
             <registryRoot>/</registryRoot>
         </remoteInstance>
-        <mount path="/_system/config" overwrite="true">
+        <mount path="/_system/config/esb" overwrite="true">
             <instanceId>config</instanceId>
             <targetPath>/_system/config/esb</targetPath>
         </mount>

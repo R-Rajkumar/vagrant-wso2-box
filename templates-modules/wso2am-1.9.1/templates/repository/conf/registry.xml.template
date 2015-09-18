@@ -45,7 +45,7 @@
             <enableCache>true</enableCache>
             <registryRoot>/</registryRoot>
         </remoteInstance>
-        <mount path="/_system/config" overwrite="true">
+        <mount path="/_system/config/apim" overwrite="true">
             <instanceId>config</instanceId>
             <targetPath>/_system/config/apim</targetPath>
         </mount>
